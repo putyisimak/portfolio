@@ -434,7 +434,7 @@ nav {
       <div class="about-card">
         <div class="about-card-icon">❤️</div>
         <div class="about-card-title">Community First</div>
-        <div class="about-card-text">I genuinely care about the servers I'm on. I build stuff for other staff, help players out, and just try to make sure everyone is having a good time. like that's actually my main goal yk.</div>
+        <div class="about-card-text">I genuinely care about the servers I work on. I build tools for staff, help players out, and make sure everyone — members and staff alike — is actually having a good time.</div>
       </div>
       <div class="about-card">
         <div class="about-card-icon">⚖️</div>
@@ -459,7 +459,7 @@ nav {
       <div class="about-card">
         <div class="about-card-icon">📈</div>
         <div class="about-card-title">Always Growing</div>
-        <div class="about-card-text">I started as a helper with no experience at all and now I'm developing for 400+ member networks and building custom plugins. I pick things up really fast and I just keep going idk.</div>
+        <div class="about-card-text">I started as a helper with zero experience and worked my way up to developing for 400+ member networks. I pick things up fast and I don't stop until it works.</div>
       </div>
     </div>
 
@@ -483,7 +483,7 @@ nav {
       <div class="timeline-item">
         <div class="timeline-dot mod">M</div>
         <div class="timeline-content">
-          <div class="timeline-title">Moderator · FastVanilla <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">~200 members</span></div>
+          <div class="timeline-title">Moderator · FastVanilla <span class="timeline-now">NOW</span> <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">~200 members</span></div>
           <div class="timeline-sub">Stepped up to full moderation — enforcing rules, managing conflicts, handling reports</div>
         </div>
       </div>
@@ -504,7 +504,7 @@ nav {
       <div class="timeline-item" style="padding-bottom:0;">
         <div class="timeline-dot dev-current">D</div>
         <div class="timeline-content">
-          <div class="timeline-title">Developer · Unstable Network <span class="timeline-now">NOW</span> <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">400+ members</span></div>
+          <div class="timeline-title">Developer · Unstable Network <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">400+ members</span></div>
           <div class="timeline-sub">Currently active — developing systems for a growing multi-server network</div>
         </div>
       </div>
@@ -528,31 +528,31 @@ nav {
       <div class="line"></div>
     </div>
     <div class="exp-grid fi">
-      <div class="exp-card role-dev current-server" onclick="toggleExp(this)">
+      <div class="exp-card role-mod current-server" onclick="toggleExp(this)">
         <div class="exp-card-top">
           <div class="exp-card-left">
-            <div class="exp-server">Unstable Network</div>
+            <div class="exp-server">FastVanilla</div>
             <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
-              <span class="exp-role-badge dev" style="margin-bottom:0;">⚙ Developer</span>
+              <span class="exp-role-badge mod" style="margin-bottom:0;">🛡 Moderator</span>
               <span class="exp-status-badge active-now">Active Now</span>
-              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 400+ members</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 ~200 members</span>
             </div>
-            <div class="exp-desc">Currently developing and maintaining systems across a multi-server network. Working at scale — coordinating with other devs, shipping features, and keeping things stable.</div>
+            <div class="exp-desc">Full moderation — enforcing rules, handling reports, issuing punishments, and maintaining a positive environment.</div>
           </div>
         </div>
         <div class="exp-expand">See full details</div>
         <div class="exp-details">
           <ul class="exp-highlights">
-            <li>Developing plugins and scripts across a multi-server network environment</li>
-            <li>Coordinating with other developers on shared systems and deployments</li>
-            <li>Handling cross-server feature requests from the moderation team</li>
-            <li>Contributing to network-wide rollouts and patch deployments</li>
+            <li>Monitored chat and in-game behaviour, enforcing rules consistently</li>
+            <li>Handled player reports and investigated rule-breaking incidents</li>
+            <li>Issued warnings, mutes, kicks, and bans with documented reasoning</li>
+            <li>Mediated disputes and de-escalated conflicts in real time</li>
+            <li>Provided feedback to ownership on rule gaps and edge cases</li>
           </ul>
           <div class="exp-tag-row">
-            <span class="exp-tag">Skript</span>
-            <span class="exp-tag">Multi-server</span>
-            <span class="exp-tag">Collaboration</span>
-            <span class="exp-tag">Network Infra</span>
+            <span class="exp-tag">Moderation</span>
+            <span class="exp-tag">Reports</span>
+            <span class="exp-tag">Community</span>
           </div>
         </div>
       </div>
@@ -565,6 +565,35 @@ nav {
       <div class="line"></div>
     </div>
     <div class="exp-grid fi">
+
+      <div class="exp-card role-dev" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">Unstable Network</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge dev" style="margin-bottom:0;">⚙ Developer</span>
+              <span class="exp-status-badge past-role">Past</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 400+ members</span>
+            </div>
+            <div class="exp-desc">Built and maintained systems across a multi-server network. Coordinated with other devs, shipped features, and kept things stable.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Developed plugins and scripts across a multi-server network environment</li>
+            <li>Coordinated with other developers on shared systems and deployments</li>
+            <li>Handled cross-server feature requests from the moderation team</li>
+            <li>Contributed to network-wide rollouts and patch deployments</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Plugin Dev</span>
+            <span class="exp-tag">Multi-server</span>
+            <span class="exp-tag">Collaboration</span>
+            <span class="exp-tag">Network Infra</span>
+          </div>
+        </div>
+      </div>
 
       <div class="exp-card role-dev" onclick="toggleExp(this)">
         <div class="exp-card-top">
@@ -596,35 +625,6 @@ nav {
         </div>
       </div>
 
-      <div class="exp-card role-mod" onclick="toggleExp(this)">
-        <div class="exp-card-top">
-          <div class="exp-card-left">
-            <div class="exp-server">FastVanilla</div>
-            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
-              <span class="exp-role-badge mod" style="margin-bottom:0;">🛡 Moderator</span>
-              <span class="exp-status-badge past-role">Past</span>
-              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 ~200 members</span>
-            </div>
-            <div class="exp-desc">Full moderation — enforcing rules, handling reports, issuing punishments, and maintaining a positive environment.</div>
-          </div>
-        </div>
-        <div class="exp-expand">See full details</div>
-        <div class="exp-details">
-          <ul class="exp-highlights">
-            <li>Monitored chat and in-game behaviour, enforcing rules consistently</li>
-            <li>Handled player reports and investigated rule-breaking incidents</li>
-            <li>Issued warnings, mutes, kicks, and bans with documented reasoning</li>
-            <li>Mediated disputes and de-escalated conflicts in real time</li>
-            <li>Provided feedback to ownership on rule gaps and edge cases</li>
-          </ul>
-          <div class="exp-tag-row">
-            <span class="exp-tag">Enforcement</span>
-            <span class="exp-tag">Report Handling</span>
-            <span class="exp-tag">Conflict Resolution</span>
-            <span class="exp-tag">Ban Appeals</span>
-          </div>
-        </div>
-      </div>
 
       <div class="exp-card role-helper" onclick="toggleExp(this)">
         <div class="exp-card-top">
