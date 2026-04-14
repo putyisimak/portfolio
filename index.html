@@ -504,7 +504,7 @@ nav {
       <div class="timeline-item" style="padding-bottom:0;">
         <div class="timeline-dot dev-current">D</div>
         <div class="timeline-content">
-          <div class="timeline-title">Developer · Unstable Network <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">400+ members</span></div>
+          <div class="timeline-title">Developer · Unstable Network <span class="timeline-now">NOW</span> <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">400+ members</span></div>
           <div class="timeline-sub">Currently active — developing systems for a growing multi-server network</div>
         </div>
       </div>
@@ -556,35 +556,26 @@ nav {
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- PAST -->
-    <div class="exp-section-label past fi">
-      <div class="dot"></div>
-      Past
-      <div class="line"></div>
-    </div>
-    <div class="exp-grid fi">
-
-      <div class="exp-card role-dev" onclick="toggleExp(this)">
+      <div class="exp-card role-dev current-server" onclick="toggleExp(this)">
         <div class="exp-card-top">
           <div class="exp-card-left">
             <div class="exp-server">Unstable Network</div>
             <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
               <span class="exp-role-badge dev" style="margin-bottom:0;">⚙ Developer</span>
-              <span class="exp-status-badge past-role">Past</span>
+              <span class="exp-status-badge active-now">Active Now</span>
               <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 400+ members</span>
             </div>
-            <div class="exp-desc">Built and maintained systems across a multi-server network. Coordinated with other devs, shipped features, and kept things stable.</div>
+            <div class="exp-desc">Currently developing and maintaining systems across a multi-server network. Working at scale — coordinating with other devs, shipping features, and keeping things stable.</div>
           </div>
         </div>
         <div class="exp-expand">See full details</div>
         <div class="exp-details">
           <ul class="exp-highlights">
-            <li>Developed plugins and scripts across a multi-server network environment</li>
-            <li>Coordinated with other developers on shared systems and deployments</li>
-            <li>Handled cross-server feature requests from the moderation team</li>
-            <li>Contributed to network-wide rollouts and patch deployments</li>
+            <li>Developing plugins and scripts across a multi-server network environment</li>
+            <li>Coordinating with other developers on shared systems and deployments</li>
+            <li>Handling cross-server feature requests from the moderation team</li>
+            <li>Contributing to network-wide rollouts and patch deployments</li>
           </ul>
           <div class="exp-tag-row">
             <span class="exp-tag">Plugin Dev</span>
@@ -594,6 +585,15 @@ nav {
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- PAST -->
+    <div class="exp-section-label past fi">
+      <div class="dot"></div>
+      Past
+      <div class="line"></div>
+    </div>
+    <div class="exp-grid fi">
 
       <div class="exp-card role-dev" onclick="toggleExp(this)">
         <div class="exp-card-top">
