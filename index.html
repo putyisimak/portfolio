@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio – Discord Staff</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blurple: #5865F2;
+  --blurple-glow: rgba(88,101,242,0.25);
+  --green: #57F287;
+  --yellow: #FEE75C;
+  --fuchsia: #EB459E;
+  --red: #ED4245;
+  --cyan: #00d4ff;
+  --bg: #060709;
+  --surface: #0f1117;
+  --surface2: #161b26;
+  --surface3: #1e2433;
+  --border: #1e2535;
+  --border2: #252d3d;
+  --text: #e6edf3;
+  --muted: #7d8590;
+  --muted2: #4d5566;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; overflow-x: hidden; }
+
+#particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(6,7,9,0.88);
+  backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid rgba(88,101,242,0.12);
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; cursor: pointer; flex-shrink: 0; }
+.nav-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blurple), #a78bfa);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 13px; color: white; flex-shrink: 0;
+  overflow: hidden;
+}
+.nav-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; transform: scale(1.35); }
+.nav-name { font-size: 15px; font-weight: 800; color: white; letter-spacing: -0.3px; }
+.nav-tag { font-size: 11px; color: var(--muted); margin-left: 2px; }
+.nav-links { display: flex; gap: 2px; }
+.nav-link {
+  padding: 7px 12px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  color: var(--muted); cursor: pointer; transition: all 0.2s;
+  border: 1px solid transparent; text-decoration: none; display: block; white-space: nowrap;
+}
+.nav-link:hover { color: white; background: rgba(255,255,255,0.05); }
+.nav-link.active { color: white; background: rgba(88,101,242,0.15); border-color: rgba(88,101,242,0.3); }
+.nav-link.dev-link { color: var(--fuchsia); }
+.nav-link.dev-link.active { background: rgba(235,69,158,0.12); border-color: rgba(235,69,158,0.3); }
+.nav-cta {
+  padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700;
+  background: var(--blurple); color: white; cursor: pointer;
+  border: none; transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
+}
+.nav-cta:hover { background: #4752c4; box-shadow: 0 0 20px var(--blurple-glow); }
+
+/* PAGES */
+.page { display: none !important; min-height: 100vh; padding-top: 64px; position: relative; z-index: 1; }
+.page.active { display: block !important; }
+#page-home.active { display: flex !important; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+/* HERO */
+#page-home { min-height: 100vh; padding: 64px 24px 48px; }
+.hero-glow {
+  position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%);
+  width: 700px; height: 700px; pointer-events: none;
+  background: radial-gradient(circle, rgba(88,101,242,0.1) 0%, transparent 65%);
+}
+.hero-avatar-wrap { position: relative; margin-bottom: 28px; }
+.hero-avatar-ring {
+  width: 110px; height: 110px; border-radius: 50%; padding: 3px;
+  background: conic-gradient(var(--blurple), #a78bfa, var(--fuchsia), var(--blurple));
+  animation: spin 6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hero-avatar-inner {
+  width: 100%; height: 100%; border-radius: 50%; background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px; font-weight: 900; color: white; overflow: hidden;
+}
+.hero-avatar-inner img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; transform: scale(1.35); }
+.hero-status {
+  position: absolute; bottom: 4px; right: 4px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--green); border: 3px solid var(--bg);
+}
+.hero-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: var(--blurple); font-weight: 700; margin-bottom: 14px; }
+.hero-title { font-size: clamp(40px, 7vw, 80px); font-weight: 900; letter-spacing: -3px; line-height: 0.95; margin-bottom: 20px; }
+.hero-title .word1 { color: white; }
+.hero-title .word2 {
+  background: linear-gradient(90deg, var(--blurple) 0%, #a78bfa 40%, var(--fuchsia) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-size: 200%; animation: grad 5s ease infinite;
+}
+@keyframes grad { 0%,100% { background-position:0% 50%; } 50% { background-position:100% 50%; } }
+.hero-sub { color: var(--muted); font-size: 17px; max-width: 520px; line-height: 1.65; margin-bottom: 32px; }
+.hero-stats { display: flex; gap: 32px; margin-bottom: 36px; justify-content: center; }
+.hero-stat { text-align: center; }
+.hero-stat-num { font-size: 28px; font-weight: 900; color: white; letter-spacing: -1px; }
+.hero-stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+.hero-tags { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
+.tag { padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid; backdrop-filter: blur(8px); white-space: nowrap; }
+.tag-blurple { border-color: rgba(88,101,242,0.5); color: #818cf8; background: rgba(88,101,242,0.08); }
+.tag-green { border-color: rgba(87,242,135,0.4); color: var(--green); background: rgba(87,242,135,0.07); }
+.tag-purple { border-color: rgba(167,139,250,0.4); color: #a78bfa; background: rgba(167,139,250,0.08); }
+.tag-yellow { border-color: rgba(254,231,92,0.4); color: var(--yellow); background: rgba(254,231,92,0.07); }
+.tag-pink { border-color: rgba(235,69,158,0.4); color: var(--fuchsia); background: rgba(235,69,158,0.07); }
+.hero-actions { display: flex; gap: 12px; }
+.btn-primary {
+  padding: 13px 28px; border-radius: 10px; font-size: 14px; font-weight: 700;
+  background: var(--blurple); color: white; cursor: pointer; border: none;
+  box-shadow: 0 0 32px rgba(88,101,242,0.35); transition: all 0.25s;
+}
+.btn-primary:hover { background: #4752c4; box-shadow: 0 0 48px rgba(88,101,242,0.5); transform: translateY(-2px); }
+.btn-secondary {
+  padding: 13px 28px; border-radius: 10px; font-size: 14px; font-weight: 700;
+  background: transparent; color: white; cursor: pointer;
+  border: 1px solid var(--border2); transition: all 0.25s;
+}
+.btn-secondary:hover { border-color: var(--blurple); background: rgba(88,101,242,0.08); transform: translateY(-2px); }
+.scroll-hint { margin-top: 56px; color: var(--muted2); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; animation: bob 2.5s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+/* SHARED PAGE */
+.page-inner { max-width: 900px; margin: 0 auto; padding: 60px 24px 80px; }
+.page-header { margin-bottom: 52px; }
+.page-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--blurple); font-weight: 700; margin-bottom: 10px; }
+.page-title { font-size: clamp(28px, 4vw, 48px); font-weight: 900; letter-spacing: -1.5px; }
+.page-sub { color: var(--muted); font-size: 15px; margin-top: 8px; line-height: 1.6; max-width: 560px; }
+.fi { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fi.show { opacity: 1; transform: none; }
+
+/* SECTION DIVIDER */
+.exp-section-label {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+  margin-bottom: 16px; margin-top: 36px;
+}
+.exp-section-label:first-child { margin-top: 0; }
+.exp-section-label .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.exp-section-label.current .dot { background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 2s ease-in-out infinite; }
+.exp-section-label.current { color: var(--green); }
+.exp-section-label.past { color: var(--muted); }
+.exp-section-label.past .dot { background: var(--muted2); }
+.exp-section-label .line { flex: 1; height: 1px; background: var(--border); }
+
+/* EXPERIENCE CARDS */
+.exp-grid { display: grid; gap: 12px; }
+.exp-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 22px 26px;
+  cursor: pointer; transition: all 0.25s;
+  position: relative; overflow: hidden;
+}
+.exp-card::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  border-radius: 3px 0 0 3px;
+}
+.exp-card.role-helper::before { background: var(--green); }
+.exp-card.role-mod::before { background: var(--blurple); }
+.exp-card.role-dev::before { background: var(--fuchsia); }
+.exp-card.current-server { border-color: rgba(87,242,135,0.2); }
+.exp-card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+.exp-card.current-server:hover { border-color: rgba(87,242,135,0.4); }
+.exp-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.exp-card-left { flex: 1; }
+.exp-server { font-size: 17px; font-weight: 800; color: white; margin-bottom: 4px; }
+.exp-role-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 10px;
+}
+.exp-role-badge.helper { background: rgba(87,242,135,0.12); color: var(--green); border: 1px solid rgba(87,242,135,0.25); }
+.exp-role-badge.mod { background: rgba(88,101,242,0.12); color: #818cf8; border: 1px solid rgba(88,101,242,0.25); }
+.exp-role-badge.dev { background: rgba(235,69,158,0.12); color: var(--fuchsia); border: 1px solid rgba(235,69,158,0.25); }
+.exp-status-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+  display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; margin-left: 10px;
+}
+.exp-status-badge.active-now { background: rgba(87,242,135,0.1); color: var(--green); border: 1px solid rgba(87,242,135,0.25); }
+.exp-status-badge.active-now::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+.exp-status-badge.past-role { background: rgba(125,133,144,0.1); color: var(--muted); border: 1px solid rgba(125,133,144,0.2); }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+.exp-desc { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.exp-expand { color: var(--muted2); font-size: 12px; margin-top: 12px; display: flex; align-items: center; gap: 6px; }
+.exp-expand::after { content: '▸'; transition: transform 0.2s; }
+.exp-card.open .exp-expand::after { transform: rotate(90deg); }
+.exp-details { display: none; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); }
+.exp-card.open .exp-details { display: block; }
+.exp-highlights { list-style: none; display: grid; gap: 9px; }
+.exp-highlights li { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--muted); line-height: 1.55; }
+.exp-highlights li::before { content: '◆'; color: var(--blurple); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
+.exp-tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.exp-tag { padding: 3px 10px; border-radius: 8px; font-size: 11px; font-weight: 600; background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+
+/* SKILLS */
+.skills-section { margin-bottom: 48px; }
+.skills-section-title { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.skills-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.skill-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; transition: all 0.25s; cursor: default; }
+.skill-item:hover { border-color: var(--blurple); box-shadow: 0 4px 24px rgba(88,101,242,0.1); transform: translateY(-2px); }
+.skill-icon { font-size: 22px; margin-bottom: 8px; }
+.skill-name { font-size: 14px; font-weight: 700; color: white; margin-bottom: 4px; }
+.skill-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.skill-bar { height: 3px; background: var(--surface3); border-radius: 2px; margin-top: 12px; overflow: hidden; }
+.skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--blurple), #a78bfa); border-radius: 2px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+.about-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: all 0.25s; }
+.about-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.about-card-icon { font-size: 28px; margin-bottom: 14px; }
+.about-card-title { font-size: 15px; font-weight: 800; color: white; margin-bottom: 8px; }
+.about-card-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.about-philosophy {
+  background: var(--surface); border: 1px solid var(--border);
+  border-left: 3px solid var(--blurple); border-radius: 0 14px 14px 0; padding: 28px 32px;
+  font-size: 16px; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 32px;
+}
+.about-timeline { position: relative; }
+.timeline-line { position: absolute; left: 15px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+.timeline-item { display: flex; gap: 24px; padding: 0 0 28px; position: relative; }
+.timeline-dot { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; position: relative; z-index: 1; }
+.timeline-dot.helper { background: rgba(87,242,135,0.15); color: var(--green); border: 1px solid rgba(87,242,135,0.3); }
+.timeline-dot.mod { background: rgba(88,101,242,0.15); color: #818cf8; border: 1px solid rgba(88,101,242,0.3); }
+.timeline-dot.dev { background: rgba(235,69,158,0.15); color: var(--fuchsia); border: 1px solid rgba(235,69,158,0.3); }
+.timeline-dot.dev-current { background: rgba(235,69,158,0.25); color: var(--fuchsia); border: 1px solid var(--fuchsia); box-shadow: 0 0 12px rgba(235,69,158,0.3); }
+.timeline-content { padding-top: 4px; }
+.timeline-title { font-size: 14px; font-weight: 700; color: white; }
+.timeline-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.timeline-now { font-size: 10px; font-weight: 700; color: var(--green); background: rgba(87,242,135,0.1); border: 1px solid rgba(87,242,135,0.25); padding: 2px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+
+/* CONTACT */
+.contact-hero { text-align: center; padding: 60px 24px 48px; position: relative; }
+.contact-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 400px; height: 300px; pointer-events: none; background: radial-gradient(circle, rgba(88,101,242,0.12) 0%, transparent 70%); }
+.contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 600px; margin: 32px auto 0; }
+.contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; transition: all 0.25s; cursor: pointer; }
+.contact-card:hover { border-color: var(--blurple); box-shadow: 0 0 32px rgba(88,101,242,0.12); transform: translateY(-2px); }
+.contact-card-icon { font-size: 28px; margin-bottom: 10px; }
+.contact-card-title { font-size: 14px; font-weight: 700; color: white; margin-bottom: 4px; }
+.contact-card-val { font-size: 13px; color: var(--muted); }
+.availability-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(87,242,135,0.1); border: 1px solid rgba(87,242,135,0.25); color: var(--green); padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+.availability-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+
+/* DEV PAGE */
+.dev-header-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(235,69,158,0.1); border: 1px solid rgba(235,69,158,0.25);
+  color: var(--fuchsia); padding: 6px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 700; margin-bottom: 16px;
+}
+.page-eyebrow.dev { color: var(--fuchsia); }
+.plugin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.plugin-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  transition: all 0.25s; cursor: pointer;
+  position: relative;
+}
+.plugin-card:hover { border-color: rgba(235,69,158,0.3); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(235,69,158,0.08); }
+.plugin-card-banner {
+  height: 80px; display: flex; align-items: center; justify-content: center;
+  font-size: 32px; position: relative; overflow: hidden;
+}
+.plugin-card-banner::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, var(--surface));
+}
+.plugin-card-body { padding: 16px 20px 20px; }
+.plugin-name { font-size: 16px; font-weight: 800; color: white; margin-bottom: 4px; }
+.plugin-server { font-size: 11px; color: var(--fuchsia); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+.plugin-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
+.plugin-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.plugin-tag { padding: 3px 9px; border-radius: 8px; font-size: 11px; font-weight: 600; background: rgba(235,69,158,0.08); color: var(--fuchsia); border: 1px solid rgba(235,69,158,0.2); }
+.plugin-tag.neutral { background: var(--surface2); color: var(--muted); border-color: var(--border); }
+
+.dev-stack {
+  margin-top: 48px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px;
+}
+.dev-stack-title { font-size: 14px; font-weight: 800; color: white; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.dev-stack-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.dev-stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.dev-stack-item { text-align: center; padding: 16px 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+.dev-stack-item:hover { border-color: var(--fuchsia); transform: translateY(-2px); }
+.dev-stack-icon { font-size: 24px; margin-bottom: 6px; }
+.dev-stack-name { font-size: 11px; font-weight: 700; color: var(--muted); }
+
+/* MODAL */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.modal {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: 18px; max-width: 680px; width: 100%;
+  overflow: hidden; animation: slideUp 0.25s ease;
+  max-height: 90vh; overflow-y: auto;
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity:0; } to { transform: none; opacity:1; } }
+.modal-video {
+  width: 100%; aspect-ratio: 16/9; background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.modal-video iframe { width: 100%; height: 100%; border: none; }
+.modal-video-placeholder {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 100%; height: 100%; gap: 12px;
+  background: linear-gradient(135deg, #0d0a1a, #1a0d2e);
+}
+.modal-video-placeholder .play-btn {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--fuchsia); display: flex; align-items: center; justify-content: center;
+  font-size: 22px; cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 0 32px rgba(235,69,158,0.4);
+}
+.modal-video-placeholder .play-btn:hover { transform: scale(1.1); box-shadow: 0 0 48px rgba(235,69,158,0.6); }
+.modal-video-placeholder p { color: var(--muted); font-size: 13px; }
+.modal-body { padding: 24px 28px 28px; }
+.modal-server-tag { font-size: 11px; font-weight: 700; color: var(--fuchsia); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.modal-title { font-size: 22px; font-weight: 900; color: white; margin-bottom: 10px; letter-spacing: -0.5px; }
+.modal-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+.modal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.modal-close {
+  position: absolute; top: 14px; right: 14px;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(0,0,0,0.5); border: 1px solid var(--border);
+  color: var(--muted); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; z-index: 10;
+}
+.modal-close:hover { background: var(--surface2); color: white; }
+.modal-video-wrap { position: relative; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--green); color: #0a1a0a;
+  padding: 12px 24px; border-radius: 30px;
+  font-size: 14px; font-weight: 800;
+  opacity: 0; transition: all 0.3s ease; z-index: 9999;
+  pointer-events: none; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="toast" id="toast"></div>
+
+<nav>
+  <div class="nav-brand" onclick="showPage('home')">
+    <div class="nav-avatar"><img src="data:image/jpeg;base64,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" alt="avatar"></div>
+    <div>
+      <span class="nav-name">parkerglazer</span>
+      <span class="nav-tag">simikethechipmunk</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link active" onclick="showPage('home')">Home</a>
+    <a class="nav-link" onclick="showPage('about')">About</a>
+    <a class="nav-link" onclick="showPage('experience')">Experience</a>
+    <a class="nav-link" onclick="showPage('skills')">Skills</a>
+    <a class="nav-link dev-link" onclick="showPage('dev')">⚙ Dev</a>
+    <a class="nav-link" onclick="showPage('contact')">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="showPage('contact')">Hire Me</button>
+</nav>
+
+<!-- HOME -->
+<div id="page-home" class="page active" style="padding:64px 24px 48px;">
+  <div class="hero-glow"></div>
+  <div class="hero-avatar-wrap">
+    <div class="hero-avatar-ring"><div class="hero-avatar-inner"><img src="data:image/jpeg;base64,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" alt="avatar"></div></div>
+    <div class="hero-status"></div>
+  </div>
+  <div class="hero-eyebrow">Discord Staff Portfolio</div>
+  <div class="hero-title">
+    <span class="word1">Community</span><br>
+    <span class="word2">Moderator.</span>
+  </div>
+  <p class="hero-sub">6 servers. Helper → Moderator → Developer. Building safe communities and the systems that keep them running.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Servers</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" style="color:var(--green);">4.5k+</div><div class="hero-stat-label">Largest Server</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" style="color:var(--fuchsia);">8+</div><div class="hero-stat-label">Plugins Built</div></div>
+  </div>
+  <div class="hero-tags">
+    <span class="tag tag-green">✦ Helper</span>
+    <span class="tag tag-blurple">🛡 Moderator</span>
+    <span class="tag tag-pink">⚙ Developer</span>
+    <span class="tag tag-yellow">📜 Rule Writing</span>
+    <span class="tag tag-purple">⚔ Conflict Resolution</span>
+  </div>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="showPage('experience')">View Experience</button>
+    <button class="btn-secondary" onclick="showPage('contact')">Get in Touch</button>
+  </div>
+  <div class="scroll-hint">↑ navigate above ↑</div>
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="page-inner">
+    <div class="page-header fi">
+      <div class="page-eyebrow">About Me</div>
+      <div class="page-title">Who I Am</div>
+      <div class="page-sub">15 years old. Started as a helper and grew through moderation into development — always focused on making communities better and having fun doing it.</div>
+    </div>
+
+    <div class="about-philosophy fi">
+      "My main goal is to overall just have fun, and do my best to make other people have the best time too. I want to help the server thrive and grow in any way I can — whether that's enforcing rules fairly, building systems that make staff's lives easier, or just being there whenever someone needs help."
+    </div>
+
+    <div class="about-grid fi">
+      <div class="about-card">
+        <div class="about-card-icon">❤️</div>
+        <div class="about-card-title">Community First</div>
+        <div class="about-card-text">I genuinely care about the servers I'm on. I build stuff for other staff, help players out, and just try to make sure everyone is having a good time. like that's actually my main goal yk.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">⚖️</div>
+        <div class="about-card-title">Fair & Consistent</div>
+        <div class="about-card-text">I apply rules the same to everyone, no favouritism. if I make a call I can back it up with evidence every time. I don't just ban people, I actually think it through first.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🧠</div>
+        <div class="about-card-title">Calm Under Pressure</div>
+        <div class="about-card-text">when things get heated I stay calm and try to talk it through first. I'd rather keep a member and figure it out than just ban them. bans are always a last resort for me.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">⏰</div>
+        <div class="about-card-title">Actually Active</div>
+        <div class="about-card-text">school days I'm on like 3-4 hours after school and weekends I can put in 7+ hours including late nights. I don't ghost servers, like if I commit to something I'm actually gonna be there.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🛠️</div>
+        <div class="about-card-title">Dev + Staff Combined</div>
+        <div class="about-card-text">most staff can't build plugins and most devs don't really want to moderate. I do both which is pretty useful yk, I actually understand what staff need and I can just build it for them.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">📈</div>
+        <div class="about-card-title">Always Growing</div>
+        <div class="about-card-text">I started as a helper with no experience at all and now I'm developing for 400+ member networks and building custom plugins. I pick things up really fast and I just keep going idk.</div>
+      </div>
+    </div>
+
+    <div class="page-eyebrow fi" style="margin-bottom:20px;">Journey</div>
+    <div class="about-timeline fi">
+      <div class="timeline-line"></div>
+      <div class="timeline-item">
+        <div class="timeline-dot helper">H</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Helper · VincentVanilla <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">4.5k+ members</span></div>
+          <div class="timeline-sub">First staff role — committed to the community, built relationships with staff and players</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot helper">H</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Helper · Breeze Vanilla <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">2.5k+ members</span></div>
+          <div class="timeline-sub">Continued growing in community support across a larger server</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot mod">M</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Moderator · FastVanilla <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">~200 members</span></div>
+          <div class="timeline-sub">Stepped up to full moderation — enforcing rules, managing conflicts, handling reports</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dev">D</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Developer · TidalSMP <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">200+ members</span></div>
+          <div class="timeline-sub">Moved into development — built Home GUI, Duel system, Spawn, and Event plugins</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot helper">H</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Helper · PurpVanilla <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">400+ members</span></div>
+          <div class="timeline-sub">Continued community support while also growing as a developer</div>
+        </div>
+      </div>
+      <div class="timeline-item" style="padding-bottom:0;">
+        <div class="timeline-dot dev-current">D</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Developer · Unstable Network <span class="timeline-now">NOW</span> <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">400+ members</span></div>
+          <div class="timeline-sub">Currently active — developing systems for a growing multi-server network</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="page-experience" class="page">
+  <div class="page-inner">
+    <div class="page-header fi">
+      <div class="page-eyebrow">Experience</div>
+      <div class="page-title">Where I've Served</div>
+      <div class="page-sub">Click any server to expand full details. Green = currently active.</div>
+    </div>
+
+    <!-- CURRENT -->
+    <div class="exp-section-label current fi">
+      <div class="dot"></div>
+      Current
+      <div class="line"></div>
+    </div>
+    <div class="exp-grid fi">
+      <div class="exp-card role-dev current-server" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">Unstable Network</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge dev" style="margin-bottom:0;">⚙ Developer</span>
+              <span class="exp-status-badge active-now">Active Now</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 400+ members</span>
+            </div>
+            <div class="exp-desc">Currently developing and maintaining systems across a multi-server network. Working at scale — coordinating with other devs, shipping features, and keeping things stable.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Developing plugins and scripts across a multi-server network environment</li>
+            <li>Coordinating with other developers on shared systems and deployments</li>
+            <li>Handling cross-server feature requests from the moderation team</li>
+            <li>Contributing to network-wide rollouts and patch deployments</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Skript</span>
+            <span class="exp-tag">Multi-server</span>
+            <span class="exp-tag">Collaboration</span>
+            <span class="exp-tag">Network Infra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAST -->
+    <div class="exp-section-label past fi">
+      <div class="dot"></div>
+      Past
+      <div class="line"></div>
+    </div>
+    <div class="exp-grid fi">
+
+      <div class="exp-card role-dev" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">TidalSMP</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge dev" style="margin-bottom:0;">⚙ Developer</span>
+              <span class="exp-status-badge past-role">Past</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 200+ members</span>
+            </div>
+            <div class="exp-desc">Built and maintained custom server-side systems and plugins for a custom SMP. Worked closely with ownership to design and ship gameplay features.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Designed and developed custom Skript plugins for gameplay mechanics</li>
+            <li>Maintained server infrastructure and plugin configurations</li>
+            <li>Collaborated with staff to translate community feedback into features</li>
+            <li>Wrote internal documentation for developer onboarding</li>
+            <li>Debugged and resolved production issues under time pressure</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Skript</span>
+            <span class="exp-tag">Paper/Spigot</span>
+            <span class="exp-tag">Plugin Config</span>
+            <span class="exp-tag">Documentation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card role-mod" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">FastVanilla</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge mod" style="margin-bottom:0;">🛡 Moderator</span>
+              <span class="exp-status-badge past-role">Past</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 ~200 members</span>
+            </div>
+            <div class="exp-desc">Full moderation — enforcing rules, handling reports, issuing punishments, and maintaining a positive environment.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Monitored chat and in-game behaviour, enforcing rules consistently</li>
+            <li>Handled player reports and investigated rule-breaking incidents</li>
+            <li>Issued warnings, mutes, kicks, and bans with documented reasoning</li>
+            <li>Mediated disputes and de-escalated conflicts in real time</li>
+            <li>Provided feedback to ownership on rule gaps and edge cases</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Enforcement</span>
+            <span class="exp-tag">Report Handling</span>
+            <span class="exp-tag">Conflict Resolution</span>
+            <span class="exp-tag">Ban Appeals</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card role-helper" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">Breeze Vanilla</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge helper" style="margin-bottom:0;">✦ Helper</span>
+              <span class="exp-status-badge past-role">Past</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 2.5k+ members</span>
+            </div>
+            <div class="exp-desc">Community support — helping members, answering questions, and keeping the server welcoming.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Assisted new members with server navigation, rules, and getting started</li>
+            <li>Answered questions in help channels promptly and thoroughly</li>
+            <li>Reported rule-breaking to moderators with clear context</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Member Support</span>
+            <span class="exp-tag">Onboarding</span>
+            <span class="exp-tag">Communication</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card role-helper" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">PurpVanilla</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge helper" style="margin-bottom:0;">✦ Helper</span>
+              <span class="exp-status-badge past-role">Past</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 400+ members</span>
+            </div>
+            <div class="exp-desc">Support and community engagement. Focused on player experience and building good relationships within the community.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Supported players with questions, issues, and rule clarifications</li>
+            <li>Monitored channels and flagged concerns to senior staff</li>
+            <li>Built positive rapport with regular community members</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Member Support</span>
+            <span class="exp-tag">Community Engagement</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card role-helper" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">VincentVanilla</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge helper" style="margin-bottom:0;">✦ Helper</span>
+              <span class="exp-status-badge past-role">Past</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 4.5k+ members</span>
+            </div>
+            <div class="exp-desc">My first staff role — where I learned the foundations of community management and what it means to represent a server as staff.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>First staff role — quickly adapted to community support responsibilities</li>
+            <li>Assisted players and maintained a welcoming environment</li>
+            <li>Learned team communication, reporting chains, and moderation basics</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Member Support</span>
+            <span class="exp-tag">First Staff Role</span>
+            <span class="exp-tag">Team Communication</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="page-skills" class="page">
+  <div class="page-inner">
+    <div class="page-header fi">
+      <div class="page-eyebrow">Skills</div>
+      <div class="page-title">What I Bring</div>
+      <div class="page-sub">Built across 6 servers and multiple roles — from frontline member support to full server development.</div>
+    </div>
+    <div class="skills-section fi">
+      <div class="skills-section-title">Moderation & Community</div>
+      <div class="skills-list">
+        <div class="skill-item">
+          <div class="skill-icon">⚖️</div>
+          <div class="skill-name">Rule Enforcement</div>
+          <div class="skill-desc">Applying rules consistently and fairly across all members, documenting decisions clearly.</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">⚔️</div>
+          <div class="skill-name">Conflict Resolution</div>
+          <div class="skill-desc">De-escalating disputes between members, finding solutions that work for everyone.</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">📜</div>
+          <div class="skill-name">Rule Writing</div>
+          <div class="skill-desc">Writing clear, unambiguous rules that close loopholes and reduce staff workload.</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🔍</div>
+          <div class="skill-name">Report Investigation</div>
+          <div class="skill-desc">Gathering evidence, reviewing logs, and building a clear picture before taking action.</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="skills-section fi">
+      <div class="skills-section-title">Development</div>
+      <div class="skills-list">
+        <div class="skill-item">
+          <div class="skill-icon">⚙️</div>
+          <div class="skill-name">Skript / Plugin Dev</div>
+          <div class="skill-desc">Building custom server mechanics, automation, and moderation tools in Skript.</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🖥️</div>
+          <div class="skill-name">Server Configuration</div>
+          <div class="skill-desc">Configuring Paper/Spigot servers, managing plugin configs, and maintaining stability.</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="skills-section fi">
+      <div class="skills-section-title">Soft Skills</div>
+      <div class="skills-list">
+        <div class="skill-item">
+          <div class="skill-icon">💬</div>
+          <div class="skill-name">Communication</div>
+          <div class="skill-desc">Clear, professional communication with members, staff, and ownership at all levels.</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🧩</div>
+          <div class="skill-name">Team Collaboration</div>
+          <div class="skill-desc">Working within staff teams, sharing context, and supporting fellow staff members.</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEV -->
+<div id="page-dev" class="page">
+  <div class="page-inner">
+    <div class="page-header fi">
+      <div class="dev-header-badge">⚙ Developer Portfolio</div>
+      <div class="page-eyebrow dev">Projects</div>
+      <div class="page-title">Plugins I've Built</div>
+      <div class="page-sub">8+ custom Skript plugins built across TidalSMP and Unstable Network. Showcasing the main 4 below — click any card to watch a showcase video.</div>
+    </div>
+
+    <div class="plugin-grid fi">
+
+      <div class="plugin-card" onclick="openModal('home')">
+        <div class="plugin-card-banner" style="background:linear-gradient(135deg,#0d1a2e,#1b3a6b);">🏠</div>
+        <div class="plugin-card-body">
+          <div class="plugin-name">Home GUI</div>
+          <div class="plugin-server">TidalSMP</div>
+          <div class="plugin-desc">Custom home teleportation system with a fully interactive GUI. Players can set, manage, and teleport to personal home locations through a clean in-game interface.</div>
+          <div class="plugin-tags">
+            <span class="plugin-tag">Skript</span>
+            <span class="plugin-tag neutral">GUI</span>
+            <span class="plugin-tag neutral">Teleport</span>
+          </div>
+          <div style="margin-top:14px;display:flex;align-items:center;gap:6px;color:var(--fuchsia);font-size:12px;font-weight:700;">▶ Watch Demo</div>
+        </div>
+      </div>
+
+      <div class="plugin-card" onclick="openModal('duel')">
+        <div class="plugin-card-banner" style="background:linear-gradient(135deg,#2e0d0d,#6b1b1b);">⚔️</div>
+        <div class="plugin-card-body">
+          <div class="plugin-name">Duel System</div>
+          <div class="plugin-server">TidalSMP</div>
+          <div class="plugin-desc">Full 1v1 duel system built in Skript. Players can challenge each other, accept/decline requests, and compete in isolated arenas with automatic result handling.</div>
+          <div class="plugin-tags">
+            <span class="plugin-tag">Skript</span>
+            <span class="plugin-tag neutral">PvP</span>
+            <span class="plugin-tag neutral">Arena</span>
+          </div>
+          <div style="margin-top:14px;display:flex;align-items:center;gap:6px;color:var(--fuchsia);font-size:12px;font-weight:700;">▶ Watch Demo</div>
+        </div>
+      </div>
+
+      <div class="plugin-card" onclick="openModal('spawn')">
+        <div class="plugin-card-banner" style="background:linear-gradient(135deg,#0d2e1a,#1b6b3a);">🌿</div>
+        <div class="plugin-card-body">
+          <div class="plugin-name">Custom Spawn</div>
+          <div class="plugin-server">TidalSMP</div>
+          <div class="plugin-desc">Custom spawn management plugin — handles spawn point configuration, player first-join routing, and spawn protection with admin controls built in Skript.</div>
+          <div class="plugin-tags">
+            <span class="plugin-tag">Skript</span>
+            <span class="plugin-tag neutral">Spawn</span>
+            <span class="plugin-tag neutral">Admin Tools</span>
+          </div>
+          <div style="margin-top:14px;display:flex;align-items:center;gap:6px;color:var(--fuchsia);font-size:12px;font-weight:700;">▶ Watch Demo</div>
+        </div>
+      </div>
+
+      <div class="plugin-card" onclick="openModal('event')">
+        <div class="plugin-card-banner" style="background:linear-gradient(135deg,#2e1a0d,#6b3d1b);">🎉</div>
+        <div class="plugin-card-body">
+          <div class="plugin-name">Event Plugin</div>
+          <div class="plugin-server">TidalSMP</div>
+          <div class="plugin-desc">Custom server event system — staff can start, manage, and end structured events. Handles participant tracking, announcements, rewards, and countdown timers.</div>
+          <div class="plugin-tags">
+            <span class="plugin-tag">Skript</span>
+            <span class="plugin-tag neutral">Events</span>
+            <span class="plugin-tag neutral">Staff Tools</span>
+          </div>
+          <div style="margin-top:14px;display:flex;align-items:center;gap:6px;color:var(--fuchsia);font-size:12px;font-weight:700;">▶ Watch Demo</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dev-stack fi">
+      <div class="dev-stack-title">Tech Stack</div>
+      <div class="dev-stack-grid">
+        <div class="dev-stack-item"><div class="dev-stack-icon">📜</div><div class="dev-stack-name">Skript</div></div>
+        <div class="dev-stack-item"><div class="dev-stack-icon">⚙️</div><div class="dev-stack-name">Paper/Spigot</div></div>
+        <div class="dev-stack-item"><div class="dev-stack-icon">🖼️</div><div class="dev-stack-name">Custom GUIs</div></div>
+        <div class="dev-stack-item"><div class="dev-stack-icon">🔧</div><div class="dev-stack-name">Plugin APIs</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div id="modal-overlay" class="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-video-wrap">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-video" id="modal-video-area">
+        <div class="modal-video-placeholder" id="modal-placeholder">
+          <div class="play-btn">▶</div>
+          <p id="modal-video-hint">Add your YouTube link to showcase this plugin</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-server-tag" id="modal-server"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="page-inner">
+    <div class="contact-hero fi">
+      <div class="contact-glow"></div>
+      <div class="availability-badge"><div class="availability-dot"></div>Available for staff & dev roles</div>
+      <div class="page-title" style="text-align:center;margin-bottom:8px;">Let's Work Together</div>
+      <div class="page-sub" style="margin:0 auto;text-align:center;">Reach out on Discord — I'm actively looking for moderation and development roles.</div>
+      <div class="contact-cards">
+        <a class="contact-card" href="#" onclick="copyDiscord(event)" style="text-decoration:none;">
+          <div class="contact-card-icon">
+            <svg width="28" height="21" viewBox="0 0 71 55" fill="none"><path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.44077 45.4204 0.52529C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.52529C25.5141 0.44359 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="#5865F2"/></svg>
+          </div>
+          <div class="contact-card-title">Discord</div>
+          <div class="contact-card-val">simikethechipmunk</div>
+        </a>
+        <a class="contact-card" href="mailto:putyisimak@gmail.com" style="text-decoration:none;">
+          <div class="contact-card-icon">📧</div>
+          <div class="contact-card-title">Email</div>
+          <div class="contact-card-val">putyisimak@gmail.com</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Particles
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+const pts = Array.from({length:70}, () => ({
+  x: Math.random()*window.innerWidth, y: Math.random()*window.innerHeight,
+  r: Math.random()*1.2+0.3, dx:(Math.random()-0.5)*0.25, dy:-Math.random()*0.3-0.05,
+  a: Math.random()*0.35+0.05
+}));
+function drawPts() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  pts.forEach(p => {
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(88,101,242,${p.a})`; ctx.fill();
+    p.x+=p.dx; p.y+=p.dy;
+    if(p.y<-5){p.y=canvas.height+5;p.x=Math.random()*canvas.width;}
+    if(p.x<0)p.x=canvas.width; if(p.x>canvas.width)p.x=0;
+  });
+  requestAnimationFrame(drawPts);
+}
+drawPts();
+
+// Page navigation
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.fi').forEach(el=>el.classList.remove('show'));
+  document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  const link = [...document.querySelectorAll('.nav-link')].find(a=>a.getAttribute('onclick')?.includes(`'${id}'`));
+  if(link) link.classList.add('active');
+  window.scrollTo(0,0);
+  setTimeout(()=>{
+    document.getElementById('page-'+id).querySelectorAll('.fi').forEach((el,i)=>{
+      setTimeout(()=>el.classList.add('show'), i*80);
+    });
+  }, 30);
+  if(id==='skills') setTimeout(()=>{
+    document.querySelectorAll('.skill-bar-fill').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,100);});
+  }, 300);
+}
+
+function toggleExp(card) { card.classList.toggle('open'); }
+
+const plugins = {
+  home: {
+    server: 'TidalSMP',
+    title: 'Home GUI',
+    desc: 'Custom home teleportation system with a fully interactive GUI. Players can set, manage, and teleport to personal home locations through a clean in-game interface — no commands needed.',
+    tags: ['Skript','GUI','Teleport','Quality of Life'],
+    video: '' // paste YouTube video ID here e.g. 'dQw4w9WgXcQ'
+  },
+  duel: {
+    server: 'TidalSMP',
+    title: 'Duel System',
+    desc: 'Full 1v1 duel system built in Skript. Players can challenge each other, accept or decline requests, and compete in isolated arenas with automatic result handling and clean UI feedback.',
+    tags: ['Skript','PvP','Arena','Challenge System'],
+    video: ''
+  },
+  spawn: {
+    server: 'TidalSMP',
+    title: 'Custom Spawn',
+    desc: 'Custom spawn management plugin — handles spawn point configuration, first-join routing, spawn protection zones, and admin controls, all built natively in Skript.',
+    tags: ['Skript','Spawn','Admin Tools','First Join'],
+    video: ''
+  },
+  event: {
+    server: 'TidalSMP',
+    title: 'Event Plugin',
+    desc: 'Custom server event system — staff can start, manage, and end structured events with a single command. Handles participant tracking, live announcements, countdown timers, and reward distribution.',
+    tags: ['Skript','Events','Staff Tools','Automation'],
+    video: ''
+  }
+};
+
+function openModal(key) {
+  const p = plugins[key];
+  document.getElementById('modal-server').textContent = p.server;
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-desc').textContent = p.desc;
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = p.tags.map(t=>`<span class="plugin-tag">${t}</span>`).join('');
+  const videoArea = document.getElementById('modal-video-area');
+  if(p.video) {
+    videoArea.innerHTML = `<iframe src="https://www.youtube.com/embed/${p.video}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+  } else {
+    videoArea.innerHTML = `<div class="modal-video-placeholder"><div class="play-btn">▶</div><p>Video coming soon — check back later</p></div>`;
+  }
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.getElementById('modal-video-area').innerHTML = '<div class="modal-video-placeholder"><div class="play-btn">▶</div></div>';
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e) { if(e.target===document.getElementById('modal-overlay')) closeModal(); }
+
+function copyDiscord(e) {
+  e.preventDefault();
+  navigator.clipboard.writeText('simikethechipmunk').then(() => {
+    const t = document.getElementById('toast');
+    t.textContent = '✓ Username copied!';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
+    setTimeout(() => window.open('https://discord.com/users/146981387455441788', '_blank'), 800);
+  });
+}
+
+// Init home
+setTimeout(()=>{
+  document.getElementById('page-home').querySelectorAll('.fi').forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('show'), i*80);
+  });
+}, 100);
+</script>
+</body>
+</html>
