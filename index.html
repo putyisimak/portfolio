@@ -267,7 +267,7 @@ nav {
 .plugin-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 14px; overflow: hidden;
-  transition: all 0.25s; cursor: pointer;
+  transition: all 0.25s; cursor: default;
   position: relative;
 }
 .plugin-card:hover { border-color: rgba(235,69,158,0.3); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(235,69,158,0.08); }
@@ -867,25 +867,6 @@ nav {
 </div>
 
 <!-- VIDEO MODAL -->
-<div id="modal-overlay" class="modal-overlay" onclick="closeModalOutside(event)">
-  <div class="modal">
-    <div class="modal-video-wrap">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div class="modal-video" id="modal-video-area">
-        <div class="modal-video-placeholder" id="modal-placeholder">
-          <div class="play-btn">▶</div>
-          <p id="modal-video-hint">Add your YouTube link to showcase this plugin</p>
-        </div>
-      </div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-server-tag" id="modal-server"></div>
-      <div class="modal-title" id="modal-title"></div>
-      <div class="modal-desc" id="modal-desc"></div>
-      <div class="modal-tags" id="modal-tags"></div>
-    </div>
-  </div>
-</div>
 
 <!-- CONTACT -->
 <div id="page-contact" class="page">
@@ -958,59 +939,6 @@ function showPage(id) {
 
 function toggleExp(card) { card.classList.toggle('open'); }
 
-const plugins = {
-  home: {
-    server: 'TidalSMP',
-    title: 'Home GUI',
-    desc: 'Custom home teleportation system with a fully interactive GUI. Players can set, manage, and teleport to personal home locations through a clean in-game interface — no commands needed.',
-    tags: ['Skript','GUI','Teleport','Quality of Life'],
-    video: '' // paste YouTube video ID here e.g. 'dQw4w9WgXcQ'
-  },
-  duel: {
-    server: 'TidalSMP',
-    title: 'Duel System',
-    desc: 'Full 1v1 duel system built in Skript. Players can challenge each other, accept or decline requests, and compete in isolated arenas with automatic result handling and clean UI feedback.',
-    tags: ['Skript','PvP','Arena','Challenge System'],
-    video: ''
-  },
-  spawn: {
-    server: 'TidalSMP',
-    title: 'Custom Spawn',
-    desc: 'Custom spawn management plugin — handles spawn point configuration, first-join routing, spawn protection zones, and admin controls, all built natively in Skript.',
-    tags: ['Skript','Spawn','Admin Tools','First Join'],
-    video: ''
-  },
-  event: {
-    server: 'TidalSMP',
-    title: 'Event Plugin',
-    desc: 'Custom server event system — staff can start, manage, and end structured events with a single command. Handles participant tracking, live announcements, countdown timers, and reward distribution.',
-    tags: ['Skript','Events','Staff Tools','Automation'],
-    video: ''
-  }
-};
-
-function openModal(key) {
-  const p = plugins[key];
-  document.getElementById('modal-server').textContent = p.server;
-  document.getElementById('modal-title').textContent = p.title;
-  document.getElementById('modal-desc').textContent = p.desc;
-  const tagsEl = document.getElementById('modal-tags');
-  tagsEl.innerHTML = p.tags.map(t=>`<span class="plugin-tag">${t}</span>`).join('');
-  const videoArea = document.getElementById('modal-video-area');
-  if(p.video) {
-    videoArea.innerHTML = `<iframe src="https://www.youtube.com/embed/${p.video}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-  } else {
-    videoArea.innerHTML = `<div class="modal-video-placeholder"><div class="play-btn">▶</div><p>Video coming soon — check back later</p></div>`;
-  }
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.getElementById('modal-video-area').innerHTML = '<div class="modal-video-placeholder"><div class="play-btn">▶</div></div>';
-  document.body.style.overflow = '';
-}
-function closeModalOutside(e) { if(e.target===document.getElementById('modal-overlay')) closeModal(); }
 
 function copyDiscord(e) {
   e.preventDefault();
