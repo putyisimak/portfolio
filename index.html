@@ -238,6 +238,8 @@ nav {
 .timeline-dot.mod { background: rgba(88,101,242,0.15); color: #818cf8; border: 1px solid rgba(88,101,242,0.3); }
 .timeline-dot.dev { background: rgba(235,69,158,0.15); color: var(--fuchsia); border: 1px solid rgba(235,69,158,0.3); }
 .timeline-dot.dev-current { background: rgba(235,69,158,0.25); color: var(--fuchsia); border: 1px solid var(--fuchsia); box-shadow: 0 0 12px rgba(235,69,158,0.3); }
+.timeline-dot.helper-current { background: rgba(87,242,135,0.25); color: var(--green); border: 1px solid var(--green); box-shadow: 0 0 12px rgba(87,242,135,0.3); }
+.timeline-dot.mod-current { background: rgba(88,101,242,0.25); color: #818cf8; border: 1px solid #818cf8; box-shadow: 0 0 12px rgba(88,101,242,0.3); }
 .timeline-content { padding-top: 4px; }
 .timeline-title { font-size: 14px; font-weight: 700; color: white; }
 .timeline-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -397,9 +399,9 @@ nav {
     <span class="word1">Community</span><br>
     <span class="word2">Moderator.</span>
   </div>
-  <p class="hero-sub">6 servers. Helper → Moderator → Developer. Building safe communities and the systems that keep them running.</p>
+  <p class="hero-sub">9 servers. Helper → Sr. Helper → Moderator → Developer → Manager. Building safe communities and the systems that keep them running.</p>
   <div class="hero-stats">
-    <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Servers</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">9</div><div class="hero-stat-label">Servers</div></div>
     <div class="hero-stat"><div class="hero-stat-num" style="color:var(--green);">4.5k+</div><div class="hero-stat-label">Largest Server</div></div>
     <div class="hero-stat"><div class="hero-stat-num" style="color:var(--fuchsia);">8+</div><div class="hero-stat-label">Plugins Built</div></div>
   </div>
@@ -494,11 +496,39 @@ nav {
           <div class="timeline-sub">Moved into development — built Home GUI, Duel system, Spawn, and Event plugins</div>
         </div>
       </div>
-      <div class="timeline-item" style="padding-bottom:0;">
+      <div class="timeline-item">
         <div class="timeline-dot dev-current">D</div>
         <div class="timeline-content">
           <div class="timeline-title">Developer · Unstable Network <span class="timeline-now">NOW</span> <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">400+ members</span></div>
           <div class="timeline-sub">Currently active — developing systems for a growing multi-server network</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot helper-current">H</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Sr. Helper · PurpVanilla <span class="timeline-now">NOW</span> <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">600+ members</span></div>
+          <div class="timeline-sub">Currently active as Senior Helper — supporting the community and mentoring newer staff</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot helper-current">T</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Trainee · NightVanilla <span class="timeline-now">NOW</span> <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">3k+ members</span></div>
+          <div class="timeline-sub">Currently active as Trainee on one of the largest vanilla networks</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot mod-current">M</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Support Staff / Manager · Celestial Events <span class="timeline-now">NOW</span> <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">1.5k+ members</span></div>
+          <div class="timeline-sub">Currently managing support operations for a large events community</div>
+        </div>
+      </div>
+      <div class="timeline-item" style="padding-bottom:0;">
+        <div class="timeline-dot mod-current">M</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Manager · VincentBets <span class="timeline-now">NOW</span> <span style="color:var(--yellow);font-size:10px;font-weight:700;background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.2);padding:2px 7px;border-radius:10px;margin-left:6px;">100+ members</span></div>
+          <div class="timeline-sub">Currently active as Manager — overseeing operations and community</div>
         </div>
       </div>
     </div>
@@ -578,6 +608,118 @@ nav {
           </div>
         </div>
       </div>
+
+      <div class="exp-card role-helper current-server" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">PurpVanilla</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge helper" style="margin-bottom:0;">✦ Sr. Helper</span>
+              <span class="exp-status-badge active-now">Active Now</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 600+ members</span>
+            </div>
+            <div class="exp-desc">Senior-level community support — helping members, mentoring newer staff, and keeping things running smoothly day to day.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Supporting members across the server as a senior-level helper</li>
+            <li>Mentoring and guiding newer helpers on the team</li>
+            <li>Handling elevated support requests and edge cases</li>
+            <li>Maintaining a positive, welcoming environment for 600+ members</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Member Support</span>
+            <span class="exp-tag">Mentoring</span>
+            <span class="exp-tag">Community</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card role-helper current-server" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">NightVanilla</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge helper" style="margin-bottom:0;">✦ Trainee</span>
+              <span class="exp-status-badge active-now">Active Now</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 3k+ members</span>
+            </div>
+            <div class="exp-desc">Active trainee on one of the largest vanilla servers — learning the ropes and proving myself at scale.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Onboarding as trainee staff in a high-traffic 3k+ member server</li>
+            <li>Supporting players and learning server-specific moderation processes</li>
+            <li>Building relationships with staff team and community members</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Member Support</span>
+            <span class="exp-tag">Onboarding</span>
+            <span class="exp-tag">Large Server</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card role-mod current-server" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">Celestial Events</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge mod" style="margin-bottom:0;">🛡 Support / Manager</span>
+              <span class="exp-status-badge active-now">Active Now</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 1.5k+ members</span>
+            </div>
+            <div class="exp-desc">Managing support operations for a large events community — keeping things organized and making sure the experience is great for everyone.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Managing support staff and handling escalated tickets</li>
+            <li>Organizing and overseeing community events</li>
+            <li>Maintaining server structure and community standards</li>
+            <li>Coordinating with ownership on community decisions</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Management</span>
+            <span class="exp-tag">Events</span>
+            <span class="exp-tag">Support</span>
+            <span class="exp-tag">Community</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card role-mod current-server" onclick="toggleExp(this)">
+        <div class="exp-card-top">
+          <div class="exp-card-left">
+            <div class="exp-server">VincentBets</div>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+              <span class="exp-role-badge mod" style="margin-bottom:0;">🛡 Manager</span>
+              <span class="exp-status-badge active-now">Active Now</span>
+              <span style="background:rgba(254,231,92,0.1);border:1px solid rgba(254,231,92,0.25);color:#FEE75C;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">👥 100+ members</span>
+            </div>
+            <div class="exp-desc">Active manager — overseeing day-to-day operations and keeping the community running well.</div>
+          </div>
+        </div>
+        <div class="exp-expand">See full details</div>
+        <div class="exp-details">
+          <ul class="exp-highlights">
+            <li>Managing server operations and staff team</li>
+            <li>Enforcing community standards and handling escalations</li>
+            <li>Working directly with ownership on decisions and improvements</li>
+          </ul>
+          <div class="exp-tag-row">
+            <span class="exp-tag">Management</span>
+            <span class="exp-tag">Operations</span>
+            <span class="exp-tag">Community</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- PAST -->
@@ -684,7 +826,7 @@ nav {
     <div class="page-header fi">
       <div class="page-eyebrow">Skills</div>
       <div class="page-title">What I Bring</div>
-      <div class="page-sub">Built across 6 servers and multiple roles — from frontline member support to full server development.</div>
+      <div class="page-sub">Built across 9 servers and multiple roles — from frontline member support to full server development.</div>
     </div>
     <div class="skills-section fi">
       <div class="skills-section-title">Moderation & Community</div>
